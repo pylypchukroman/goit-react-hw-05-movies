@@ -1,17 +1,28 @@
+import HomePage from 'pages/HomePage/HomePage';
+import MoivesPage from 'pages/MoivesPage/MoivesPage';
+
+import { Route, Switch } from 'react-router';
+import MovieDetailsPage from './MovieDetailsPage/MovieDetailsPage';
+import Navigation from './Navigation/Navigation';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
+    <div>
+      <Navigation />
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/movies">
+          <MoivesPage />
+        </Route>
+        {/* <Route>
+          <NotFoundPage />
+        </Route> */}
+        <Route path="/movies/:movieId">
+          <MovieDetailsPage />
+        </Route>
+      </Switch>
     </div>
   );
 };

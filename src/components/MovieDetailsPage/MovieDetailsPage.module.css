@@ -1,0 +1,27 @@
+.movie {
+  display: flex;
+  padding: 30px;
+  border-bottom: 1px solid #212121;
+}
+.img {
+  width: 200px;
+  height: 250px;
+}
+.info__wrapper {
+  padding: 15px;
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+.overview {
+  font-size: 15px;
+  font-weight: 700;
+}
+.genres {
+  font-size: 13px;
+  font-weight: 700;
+}
+.additional__info {
+  border-bottom: 1px solid #212121;
+}

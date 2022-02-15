@@ -23,3 +23,30 @@ export const getMoviesDetails = id => {
       throw error;
     });
 };
+
+export const getMovieCast = id => {
+  return axios
+    .get(`/3/movie/${id}/credits?`)
+    .then(res => res.data.cast)
+    .catch(error => {
+      throw error;
+    });
+};
+
+export const getMovieReviews = id => {
+  return axios
+    .get(`/3/movie/${id}/reviews?`)
+    .then(res => res.data.results)
+    .catch(error => {
+      throw error;
+    });
+};
+
+export const searchMovies = query => {
+  return axios
+    .get(`/3/search/movie?query=${query}`)
+    .then(res => res.data.results)
+    .catch(error => {
+      throw error;
+    });
+};

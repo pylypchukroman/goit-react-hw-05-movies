@@ -2,9 +2,7 @@ import style from './MovieDetailsPage.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { getMoviesDetails } from 'Utils/MovieAPI';
-import { Route, Switch, useHistory, useLocation } from 'react-router';
-// import Cast from 'components/Cast/Cast';
-// import Reviews from 'components/Reviews/Reviews';
+import { Route, Switch, useHistory } from 'react-router';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
@@ -12,7 +10,7 @@ const Reviews = lazy(() => import('../Reviews/Reviews'));
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
-  // const history = useHistory();
+  const history = useHistory();
   // const location = useLocation();
 
   useEffect(() => {
@@ -22,12 +20,15 @@ const MovieDetailsPage = () => {
   // const onGoBack = () => {
   //   history.push(location?.state?.from?.location ?? '/movies');
   // };
+  const historeChange = () => {
+    history.goBack();
+  };
 
   return (
     <div className={style.wrapper}>
-      {/* <button type="button" className={style.button} onClick={onGoBack}>
-        &#8656;&ensp; Go back
-      </button> */}
+      <button type="button" onClick={historeChange}>
+        Go Back
+      </button>
 
       <div className={style.movie}>
         <img

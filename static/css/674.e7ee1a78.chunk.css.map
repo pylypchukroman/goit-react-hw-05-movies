@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/674.e7ee1a78.chunk.css","mappings":"AAAA,yBACE,YACF,CACA,uBACE,UACF","sources":["pages/HomePage/HomePage.module.css"],"sourcesContent":[".wrapper {\n  padding: 10px;\n}\n.link {\n  color: blue;\n}\n"],"names":[],"sourceRoot":""}

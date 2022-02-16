@@ -1,9 +1,6 @@
-// import HomePage from 'pages/HomePage/HomePage';
-// import MoivesPage from 'pages/MoivesPage/MoivesPage';
 import { lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router';
-// import MovieDetailsPage from './MovieDetailsPage/MovieDetailsPage';
-import Navigation from './Navigation/Navigation';
+import { Redirect, Route, Switch } from 'react-router';
+// import Navigation from './Navigation/Navigation';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const MoivesPage = lazy(() => import('../pages/MoivesPage/MoivesPage'));
@@ -14,7 +11,7 @@ const MovieDetailsPage = lazy(() =>
 export const App = () => {
   return (
     <div>
-      <Navigation />
+      {/* <Navigation /> */}
       <Suspense fallback={<h1>LOADING...</h1>}>
         <Switch>
           <Route exact path="/">
@@ -26,6 +23,7 @@ export const App = () => {
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </div>

@@ -2,7 +2,7 @@ import style from './MovieDetailsPage.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { getMoviesDetails } from 'Utils/MovieAPI';
-import { Route, Switch, useHistory } from 'react-router';
+import { Route, Switch, useHistory, useLocation } from 'react-router';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
@@ -11,33 +11,30 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const history = useHistory();
-  // const location = useLocation();
+  const location = useLocation();
+  const URLwrapper = 'https://image.tmdb.org/t/p/w400/';
 
   useEffect(() => {
     getMoviesDetails(movieId).then(data => setMovie(data));
   }, [movieId]);
 
-  // const onGoBack = () => {
-  //   history.push(location?.state?.from?.location ?? '/movies');
-  // };
-  const historeChange = () => {
-    history.goBack();
+  const onGoBack = () => {
+    history.push(location?.state?.from?.location ?? '/');
   };
+  // const historeChange = () => {
+  //   history.goBack();
+  // };
 
   return (
     <div className={style.wrapper}>
-      <button type="button" onClick={historeChange}>
-        Go Back
+      <button type="button" className={style.button} onClick={onGoBack}>
+        Go back
       </button>
 
       <div className={style.movie}>
         <img
           className={style.img}
-          src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w400/${movie.poster_path}`
-              : null
-          }
+          src={movie.poster_path ? `${URLwrapper}${movie.poster_path}` : null}
           alt=""
         />
         <div className={style.info__wrapper}>

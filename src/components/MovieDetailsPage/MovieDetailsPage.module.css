@@ -30,12 +30,11 @@
   display: flex;
   flex-direction: column;
 }
-.back__btn {
+.button {
   margin-bottom: 5px;
   padding: 3px 10px;
   border: 1px solid#212121;
   border-radius: 5px;
-  text-decoration: none;
   color: #212121;
   font-size: 10px;
 }

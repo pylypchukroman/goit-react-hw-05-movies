@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
+  const URLwrapper = 'https://image.tmdb.org/t/p/w400/';
 
   useEffect(() => {
     getMovieCast(movieId).then(data => setCast(data));
@@ -23,7 +24,7 @@ const Cast = () => {
                 className={style.img}
                 src={
                   actor.profile_path
-                    ? `https://image.tmdb.org/t/p/w400/${actor.profile_path}`
+                    ? `${URLwrapper}${actor.profile_path}`
                     : null
                 }
                 alt=""

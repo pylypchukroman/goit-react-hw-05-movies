@@ -4,6 +4,7 @@ import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import qs from 'query-string';
 import { searchMovies } from 'Utils/MovieAPI';
+import Navigation from 'components/Navigation/Navigation';
 
 const MoivesPage = () => {
   const [input, setInput] = useState('');
@@ -32,32 +33,41 @@ const MoivesPage = () => {
   };
 
   return (
-    <div className={styles.form__wrapper}>
-      <form className={styles.SearchForm} onSubmit={hendleSubmit}>
-        <input
-          className={styles.SearchForm__input}
-          type="text"
-          autoComplete="off"
-          value={input}
-          autoFocus
-          placeholder="Search movies"
-          onChange={handleChange}
-        />
-        <button type="submit" className={styles.SearchForm__button}>
-          Search
-        </button>
-      </form>
-      <ul className={styles.movie}>
-        {movies &&
-          movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} className={styles.link}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-      </ul>
-    </div>
+    <>
+      <Navigation />
+      <div className={styles.form__wrapper}>
+        <form className={styles.SearchForm} onSubmit={hendleSubmit}>
+          <input
+            className={styles.SearchForm__input}
+            type="text"
+            autoComplete="off"
+            value={input}
+            autoFocus
+            placeholder="Search movies"
+            onChange={handleChange}
+          />
+          <button type="submit" className={styles.SearchForm__button}>
+            Search
+          </button>
+        </form>
+        <ul className={styles.movie}>
+          {movies &&
+            movies.map(movie => (
+              <li key={movie.id}>
+                <Link
+                  to={{
+                    pathname: `/movies/${movie.id}`,
+                    state: { from: { location } },
+                  }}
+                  className={styles.link}
+                >
+                  {movie.title}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

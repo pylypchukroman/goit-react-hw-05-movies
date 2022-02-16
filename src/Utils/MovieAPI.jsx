@@ -8,7 +8,7 @@ axios.defaults.params = {
 
 export const getMoviesList = () => {
   return axios
-    .get('/3/trending/movie/day?')
+    .get('/3/trending/movie/day')
     .then(res => res.data.results)
     .catch(error => {
       throw error;
@@ -17,7 +17,7 @@ export const getMoviesList = () => {
 
 export const getMoviesDetails = id => {
   return axios
-    .get(`/3/movie/${id}?`)
+    .get(`/3/movie/${id}`)
     .then(res => res.data)
     .catch(error => {
       throw error;
@@ -26,7 +26,7 @@ export const getMoviesDetails = id => {
 
 export const getMovieCast = id => {
   return axios
-    .get(`/3/movie/${id}/credits?`)
+    .get(`/3/movie/${id}/credits`)
     .then(res => res.data.cast)
     .catch(error => {
       throw error;
@@ -35,7 +35,7 @@ export const getMovieCast = id => {
 
 export const getMovieReviews = id => {
   return axios
-    .get(`/3/movie/${id}/reviews?`)
+    .get(`/3/movie/${id}/reviews`)
     .then(res => res.data.results)
     .catch(error => {
       throw error;
